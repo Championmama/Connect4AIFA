@@ -17,7 +17,7 @@ public class App extends JFrame {
 
     private Spielfeld Field = new Spielfeld();
     private Canvas canvas = new Canvas(Field);
-    private AI ai = new AI();
+    private AI ai = new AI(canvas);
 
     public App() {
         super();
