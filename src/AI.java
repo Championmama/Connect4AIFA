@@ -6,7 +6,6 @@ public class AI {
     public AI() {}
 
     public int getNextMove(Spielfeld Field) {
-        System.out.println("-------------");
         return getBestMove(Field, 0).Move;
     }
 
@@ -22,7 +21,7 @@ public class AI {
                     return new Move(i, 100);
                 Move thismove = getWorstMove(help, depth + 1);
                 thismove.Move=i;
-                if(depth==0) thismove.print("Best"+i);
+                //if(depth==0) thismove.print("Best"+i);
                 
                 if (thismove.Score > bestMove.Score)
                 bestMove = thismove;

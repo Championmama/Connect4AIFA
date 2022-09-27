@@ -35,7 +35,8 @@ public class App extends JFrame {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(won) return;
+                if (won)
+                    return;
                 if (e.getButton() == 1 || e.getButton() == 2) {
                     int x = e.getLocationOnScreen().x;
                     int y = e.getLocationOnScreen().y;
@@ -56,7 +57,7 @@ public class App extends JFrame {
 
                         // MinMax Algorithmus
                         int pos = ai.getNextMove(Field);
-                        if (pos==-1) {
+                        if (pos == -1) {
                             System.out.println("AI has no Idea what to do");
                             return;
                         }
@@ -64,7 +65,7 @@ public class App extends JFrame {
                         Field.setField(cFeld);
                         if (Field.testSieger(pos)) {
                             System.out.println("Computer Win");
-                            won=true;
+                            won = true;
                         }
                     }
                 }
