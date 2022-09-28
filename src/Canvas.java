@@ -41,11 +41,14 @@ public class Canvas extends JPanel {
             for (int y = 0; y < Field[x].length; y++) {
                 if (Field[x][y] == 1) {
                     graphics.setColor(Color.red);
+                    graphics.fillArc((CIRCLEWIDTH + XOFFSET) * x, (CIRCLEHEIGHT + YOFFSET) * y, CIRCLEWIDTH,
+                            CIRCLEHEIGHT, 0, 360);
                 } else if (Field[x][y] == 2) {
                     graphics.setColor(Color.yellow);
+                    graphics.fillArc((CIRCLEWIDTH + XOFFSET) * x, (CIRCLEHEIGHT + YOFFSET) * y, CIRCLEWIDTH,
+                            CIRCLEHEIGHT, 0, 360);
                 }
-                graphics.fillArc((CIRCLEWIDTH + XOFFSET) * x, (CIRCLEHEIGHT + YOFFSET) * y, CIRCLEWIDTH,
-                        CIRCLEHEIGHT, 0, 360);
+
                 graphics.setColor(Color.gray);
                 graphics.drawRect(x * (XOFFSET + CIRCLEWIDTH) - XOFFSET / 2, y * (YOFFSET + CIRCLEHEIGHT) - YOFFSET / 2,
                         CIRCLEWIDTH + XOFFSET, CIRCLEHEIGHT + YOFFSET);

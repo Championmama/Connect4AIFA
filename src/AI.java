@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class AI {
     private int MAXDEPTH = 6;
-    int depthiterator = 8;
+    int depthiterator = 12;
 
     private Canvas canvas;
     private int[] clmScore = {-200,-200,-200,-200,-200,-200,-200};
