@@ -1,6 +1,7 @@
 # KI aus einer Facharbeit des Themas:
 
-Implementierung einer künstlichen Intelligenz am Beispiel des Spieles "Connect 4" (Praxisarbeit)
+Implementierung einer künstlichen Intelligenz am Beispiel des Spieles "Connect 4" (Praxisarbeit)  
+
 Autor: Vincent Loewenstein
 
 Username: Championmama
