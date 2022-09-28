@@ -1,4 +1,4 @@
-# KI aus einer Facharbeit des Themas:
+# KI aus einer Facharbeit des Themas
 
 Implementierung einer künstlichen Intelligenz am Beispiel des Spieles "Connect 4" (Praxisarbeit)  
 
