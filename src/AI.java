@@ -1,10 +1,8 @@
 package src;
 
-import java.util.LinkedList;
-
 public class AI {
     private int MAXDEPTH = 6;
-    int depthiterator = 12;
+    int depthiterator = 2*MAXDEPTH;
 
     private Canvas canvas;
     private int[] clmScore = {-200,-200,-200,-200,-200,-200,-200};
@@ -20,7 +18,7 @@ public class AI {
     }
 
     private Move getBestMove(Spielfeld mSpielfeld, int depth) {
-        LinkedList<Spielfeld> SpielFeldListe = new LinkedList<Spielfeld>();
+        Spielfeld[] SpielFeldListe = new Spielfeld[7];
         Spielfeld current = new Spielfeld(mSpielfeld);
         Move bestMove = new Move(-1, -200);
         if (depth > MAXDEPTH)
@@ -30,13 +28,13 @@ public class AI {
                 Spielfeld help = current.getNextFeld(i, 2);
                 if (help.testSieger(i))
                     return new Move(i, 100);
-                SpielFeldListe.add(help);
+                SpielFeldListe[i]=help;
             } else {
-                SpielFeldListe.add(null);
+                SpielFeldListe[i]=null;
             }
         }
         for (int i = 0; i < 7; i++) {
-            Spielfeld help = SpielFeldListe.get(i);
+            Spielfeld help = SpielFeldListe[i];
             if (help != null) {
                 Move thismove = getWorstMove(help, depth + 1);
                 thismove.Move = i;
@@ -48,13 +46,13 @@ public class AI {
                     bestMove = thismove;
             }
         }
-        canvas.paintScore(clmScore);
+        if (depth==0) canvas.setclmScore(clmScore);
         bestMove.Score = (int) (bestMove.Score / 2);
         return bestMove;
     }
 
     private Move getWorstMove(Spielfeld mSpielfeld, int depth) {
-        LinkedList<Spielfeld> SpielFeldListe = new LinkedList<Spielfeld>();
+        Spielfeld[] SpielFeldListe = new Spielfeld[7];
         Spielfeld current = new Spielfeld(mSpielfeld);
         Move bestMove = new Move(3, 200);
         if (depth > MAXDEPTH)
@@ -64,14 +62,14 @@ public class AI {
                 Spielfeld help = current.getNextFeld(i, 1);
                 if (help.testSieger(i))
                     return new Move(i, -100);
-                SpielFeldListe.add(help);
+                SpielFeldListe[i]=help;
             } else {
-                SpielFeldListe.add(null);
+                SpielFeldListe[i]=null;
             }
         }
 
         for (int i = 0; i < 7; i++) {
-            Spielfeld help = SpielFeldListe.get(i);
+            Spielfeld help = SpielFeldListe[i];
             if (help != null) {
                 Move thismove = getBestMove(help, depth + 1);
                 thismove.Move = i;

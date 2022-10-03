@@ -20,25 +20,20 @@ public class Canvas extends JPanel {
     private final int CIRCLEWIDTH = 80;
     private final int CIRCLEHEIGHT = 80;
 
-    private Graphics2D graphics;
-    public int[] pclmScore = { -200, -200, -200, -200, -200, -200, -200 };
+    public int[] clmScore = { -200, -200, -200, -200, -200, -200, -200 };
 
-    public void paintScore(int[] clmScore) {
-        pclmScore = clmScore;
-        graphics.setColor(Color.black);
-        for (int i = 0; i < clmScore.length; i++) {
-            if (clmScore[i] != -200)
-                graphics.drawString("" + clmScore[i], i * (CIRCLEWIDTH + XOFFSET), 600);
-        }
+    public void setclmScore(int[] pclmScore) {
+        this.clmScore = pclmScore;
     }
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
         int[][] Field = SFeld.getField();
-        graphics = (Graphics2D) g;
+        Graphics2D graphics = (Graphics2D) g;
         for (int x = 0; x < Field.length; x++) {
             for (int y = 0; y < Field[x].length; y++) {
+                //Münzen
                 if (Field[x][y] == 1) {
                     graphics.setColor(Color.red);
                     graphics.fillArc((CIRCLEWIDTH + XOFFSET) * x, (CIRCLEHEIGHT + YOFFSET) * y, CIRCLEWIDTH,
@@ -48,12 +43,17 @@ public class Canvas extends JPanel {
                     graphics.fillArc((CIRCLEWIDTH + XOFFSET) * x, (CIRCLEHEIGHT + YOFFSET) * y, CIRCLEWIDTH,
                             CIRCLEHEIGHT, 0, 360);
                 }
-
+                //Hintergrund
                 graphics.setColor(Color.gray);
                 graphics.drawRect(x * (XOFFSET + CIRCLEWIDTH) - XOFFSET / 2, y * (YOFFSET + CIRCLEHEIGHT) - YOFFSET / 2,
                         CIRCLEWIDTH + XOFFSET, CIRCLEHEIGHT + YOFFSET);
             }
         }
-        paintScore(pclmScore);
+        //Score
+        graphics.setColor(Color.black);
+        for (int i = 0; i < clmScore.length; i++) {
+            if (clmScore[i] != -200)
+                graphics.drawString("" + clmScore[i], i * (CIRCLEWIDTH + XOFFSET), 600);
+        }
     }
 }

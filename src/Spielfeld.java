@@ -25,15 +25,13 @@ public class Spielfeld {
      * Speichert das Feld für alle Unterklassen ab:
      * 0 Leeres Feld
      * 1 Münze von Spieler 1
-     * 2 Münze von Spieler 2
+     * 2 Münze von KI
      */
     private int[][] Field = {
             { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }
     };
     private int[] clmstate = { 0, 0, 0, 0, 0, 0, 0 };
-    public final int length = Field.length;
-    public final int width = Field[0].length;
 
     public int[] getClmstate() {
         return clmstate;

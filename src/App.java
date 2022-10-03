@@ -26,7 +26,7 @@ public class App extends JFrame {
         setSize(width, height);
 
         // Bildelemente
-        canvas.setSize(width - 200, height);
+        canvas.setSize(width, height);
         canvas.setVisible(true);
 
         // System.out.println(TensorFlow.version());
@@ -42,8 +42,8 @@ public class App extends JFrame {
                     int y = e.getLocationOnScreen().y;
                     int xpos = (int) (x / 100);
                     int ypos = (int) (y / 95);
-                    if (xpos < Field.length && ypos < Field.width) {
-                        if ((turn ? 2 : 1) == TEAM) {
+                    if (xpos < 7 && ypos < 6) {
+                        if (!turn) {
                             Field.putBall(xpos, TEAM);
                             canvas.repaint();
                         } else
