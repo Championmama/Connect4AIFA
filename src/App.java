@@ -7,7 +7,6 @@ public class App extends JFrame {
     private final int width = 1000;
     private final int height = 800;
 
-    private boolean turn = false;
     private boolean won = false;
     private int TEAM = 1;
 
@@ -43,29 +42,28 @@ public class App extends JFrame {
                     int xpos = (int) (x / 100);
                     int ypos = (int) (y / 95);
                     if (xpos < 7 && ypos < 6) {
-                        if (!turn) {
-                            Field.putBall(xpos, TEAM);
-                            canvas.repaint();
-                        } else
-                            return;
-                    }
 
-                    if (Field.testSieger(xpos)) {
-                        System.out.println("Player Win");
-                        won = true;
-                    } else {
-
-                        // MinMax Algorithmus
-                        int pos = ai.getNextMove(Field);
-                        if (pos == -1) {
-                            System.out.println("AI has no Idea what to do");
-                            return;
-                        }
-                        Spielfeld cFeld = Field.getNextFeld(pos, TEAM % 2 + 1);
-                        Field.setField(cFeld);
-                        if (Field.testSieger(pos)) {
-                            System.out.println("Computer Win");
+                        if (!Field.putBall(xpos, TEAM)) return;
+                        canvas.paint(canvas.getGraphics());
+                        if (Field.testSieger(xpos)) {
+                            System.out.println("Player Win");
                             won = true;
+                            canvas.repaint();
+                        } else {
+                            
+                            // MinMax Algorithmus
+                            int pos = ai.getNextMove(Field);
+                            if (pos == -1) {
+                                System.out.println("AI has no Idea what to do");
+                                return;
+                            }
+                            Spielfeld cFeld = Field.getNextFeld(pos, TEAM % 2 + 1);
+                            Field.setField(cFeld);
+                            canvas.repaint();
+                            if (Field.testSieger(pos)) {
+                                System.out.println("Computer Win");
+                                won = true;
+                            }
                         }
                     }
                 }

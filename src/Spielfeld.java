@@ -68,7 +68,8 @@ public class Spielfeld {
         pFeld[pos][5 - clmstate[pos]] = TEAM;
         clmstate[pos]++;
 
-        Spielfeld help = new Spielfeld(pFeld, clmstate);
+        Spielfeld help = 
+        new Spielfeld(pFeld, clmstate);
         clmstate[pos]--;
         return help;
     }
