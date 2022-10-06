@@ -36,8 +36,8 @@ public class AI {
             Spielfeld help = SpielFeldListe[i];
             if (help != null) {
                 Move thismove = getWorstMove(help, depth + 1);
-                thismove.Move = i;
                 if (depth == 0) {
+                    thismove.Move = i;
                     thismove.print("Best" + i);
                     clmScore[i]=thismove.Score;
                 }
@@ -52,7 +52,7 @@ public class AI {
 
     private Move getWorstMove(Spielfeld mSpielfeld, int depth) {
         Spielfeld[] SpielFeldListe = new Spielfeld[7];
-        Move bestMove = new Move(3, 200);
+        Move worstMove = new Move(-1, 200);
         if (depth > MAXDEPTH)
             return new Move(-1, 0);
         for (int i = 0; i < 7; i++) {
@@ -70,12 +70,11 @@ public class AI {
             Spielfeld help = SpielFeldListe[i];
             if (help != null) {
                 Move thismove = getBestMove(help, depth + 1);
-                thismove.Move = i;
-                if (thismove.Score < bestMove.Score)
-                    bestMove = thismove;
+                if (thismove.Score < worstMove.Score)
+                    worstMove = thismove;
             }
         }
-        return bestMove;
+        return worstMove;
     }
 
     public class Move {
