@@ -51,7 +51,7 @@ public class Spielfeld {
     }
 
     /**
-     * Fügt bei {pos} ein Element in das lokale Feld ein und gibt das Feld zurück.
+     * Fügt bei <b>pos</b> ein Element in das lokale Feld ein und gibt das Feld zurück.
      * 
      * @param pos Position des hinzugefügten Steines
      * @return bearbeitetes Feld

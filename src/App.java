@@ -48,7 +48,6 @@ public class App extends JFrame {
                         if (Field.testSieger(xpos)) {
                             System.out.println("Player Win");
                             won = true;
-                            canvas.repaint();
                         } else {
                             
                             // MinMax Algorithmus
