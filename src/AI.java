@@ -24,8 +24,8 @@ public class AI {
         if (depth > MAXDEPTH)
             return new Move(-1, 0);
         for (int i = 0; i < 7; i++) {
-            if (current.getClmstate()[i] < 6) {
-                Spielfeld help = current.getNextFeld(i, 2);
+            if (mSpielfeld.getClmstate()[i] < 6) {
+                Spielfeld help = mSpielfeld.getNextFeld(i, 2);
                 if (help.testSieger(i))
                     return new Move(i, 100);
                 SpielFeldListe[i]=help;
@@ -53,13 +53,12 @@ public class AI {
 
     private Move getWorstMove(Spielfeld mSpielfeld, int depth) {
         Spielfeld[] SpielFeldListe = new Spielfeld[7];
-        Spielfeld current = new Spielfeld(mSpielfeld);
         Move bestMove = new Move(3, 200);
         if (depth > MAXDEPTH)
             return new Move(-1, 0);
         for (int i = 0; i < 7; i++) {
-            if (current.getClmstate()[i] < 6) {
-                Spielfeld help = current.getNextFeld(i, 1);
+            if (mSpielfeld.getClmstate()[i] < 6) {
+                Spielfeld help = mSpielfeld.getNextFeld(i, 1);
                 if (help.testSieger(i))
                     return new Move(i, -100);
                 SpielFeldListe[i]=help;
