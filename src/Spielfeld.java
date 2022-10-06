@@ -5,11 +5,6 @@ public class Spielfeld {
 
     }
 
-    public Spielfeld(Spielfeld copy) {
-        this.Field = copy.Field;
-        this.clmstate = copy.clmstate;
-    }
-
     public Spielfeld(int[][] Feld, int[] paramclmstate) {
         for (int i = 0; i < Feld.length; i++) {
             for (int j = 0; j < Feld[i].length; j++) {

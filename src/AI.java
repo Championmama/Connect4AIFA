@@ -19,7 +19,6 @@ public class AI {
 
     private Move getBestMove(Spielfeld mSpielfeld, int depth) {
         Spielfeld[] SpielFeldListe = new Spielfeld[7];
-        Spielfeld current = new Spielfeld(mSpielfeld);
         Move bestMove = new Move(-1, -200);
         if (depth > MAXDEPTH)
             return new Move(-1, 0);
