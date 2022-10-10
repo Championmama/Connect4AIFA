@@ -1,10 +1,13 @@
 package src;
 
 public class Spielfeld {
-    public Spielfeld() {
+    public Spielfeld() {}
 
-    }
-
+    /**
+     * Erstellt ein neues Feld anhand einer 2D-Reihung und des clmScores
+     * @param Feld der zu kopierende Inhalt des Feldes
+     * @param paramclmstate der clmState des Feldes
+     */
     public Spielfeld(int[][] Feld, int[] paramclmstate) {
         for (int i = 0; i < Feld.length; i++) {
             for (int j = 0; j < Feld[i].length; j++) {
@@ -41,12 +44,13 @@ public class Spielfeld {
     }
 
     public void setField(Spielfeld field) {
+        //beides sind Referenzen!
         Field = field.getField();
         clmstate = field.clmstate;
     }
 
     /**
-     * Fügt bei <b>pos</b> ein Element in das lokale Feld ein und gibt das Feld zurück.
+     * Fügt bei <b>pos</b> ein Element in das lokale Feld ein und gibt das Feld zurück. <br></br><b>OHNE ZU TESTEN</b>
      * 
      * @param pos Position des hinzugefügten Steines
      * @return bearbeitetes Feld
@@ -70,7 +74,8 @@ public class Spielfeld {
     }
 
     /**
-     * puts a Ball down
+     * platziert eine Münze. <br></br>
+     * <b>testet dabei</b>, ob der Zug legitim ist
      * 
      * @param pos  the position to put the Disk
      * @param TEAM the Teams ball to put
@@ -85,6 +90,11 @@ public class Spielfeld {
             return false;
     }
 
+    /**
+     * testet nach sieger
+     * @param lastPosition letzte platzierte Stelle
+     * @return ob es einen Sieger gab
+     */
     public boolean testSieger(int lastPosition) {
         int savedyPos = clmstate[lastPosition] - 1;
         int TEAM = Field[lastPosition][5 - savedyPos];

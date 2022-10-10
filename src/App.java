@@ -8,7 +8,6 @@ public class App extends JFrame {
     private final int height = 800;
 
     private boolean won = false;
-    private int TEAM = 1;
 
     public static void main(String[] args) {
         new App();
@@ -43,24 +42,23 @@ public class App extends JFrame {
                     int ypos = (int) (y / 95);
                     if (xpos < 7 && ypos < 6) {
 
-                        if (!Field.putBall(xpos, TEAM)) return;
+                        if (!Field.putBall(xpos, 1)) return;
                         canvas.paint(canvas.getGraphics());
                         if (Field.testSieger(xpos)) {
-                            System.out.println("Player Win");
                             won = true;
                         } else {
                             
                             // MinMax Algorithmus
                             int pos = ai.getNextMove(Field);
                             if (pos == -1) {
-                                System.out.println("AI has no Idea what to do");
+                                //KI konnte keinen Zug finden
                                 return;
                             }
-                            Spielfeld cFeld = Field.getNextFeld(pos, TEAM % 2 + 1);
+                            Spielfeld cFeld = Field.getNextFeld(pos, 2);
                             Field.setField(cFeld);
+
                             canvas.repaint();
                             if (Field.testSieger(pos)) {
-                                System.out.println("Computer Win");
                                 won = true;
                             }
                         }

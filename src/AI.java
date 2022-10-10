@@ -13,7 +13,6 @@ public class AI {
 
     public int getNextMove(Spielfeld Field) {
         MAXDEPTH=(int)depthiterator++/2;
-        System.out.println("Maxdepth: " + MAXDEPTH + "\n-------------------");
         return getBestMove(Field, 0).Move;
     }
 
@@ -38,7 +37,6 @@ public class AI {
                 Move thismove = getWorstMove(help, depth + 1);
                 if (depth == 0) {
                     thismove.Move = i;
-                    thismove.print("Best" + i);
                     clmScore[i]=thismove.Score;
                 }
                 if (thismove.Score > bestMove.Score)
@@ -83,10 +81,6 @@ public class AI {
         public Move(int Move, int Score) {
             this.Move = Move;
             this.Score = Score;
-        }
-
-        public void print(String name) {
-            System.out.println(this.Move + ": " + this.Score);
         }
     }
 }
