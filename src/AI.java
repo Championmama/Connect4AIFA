@@ -5,7 +5,7 @@ public class AI {
     int depthiterator = 2*MAXDEPTH;
 
     private Canvas canvas;
-    private int[] clmScore = {-200,-200,-200,-200,-200,-200,-200};
+    private int[] KIScore = {-200,-200,-200,-200,-200,-200,-200};
 
     public AI(Canvas c) {
         canvas = c;
@@ -37,13 +37,13 @@ public class AI {
                 Move thismove = getWorstMove(help, depth + 1);
                 if (depth == 0) {
                     thismove.Move = i;
-                    clmScore[i]=thismove.Score;
+                    KIScore[i]=thismove.Score;
                 }
                 if (thismove.Score > bestMove.Score)
                     bestMove = thismove;
             }
         }
-        if (depth==0) canvas.setclmScore(clmScore);
+        if (depth==0) canvas.setKIScore(KIScore);
         bestMove.Score = (int) (bestMove.Score / 2);
         return bestMove;
     }

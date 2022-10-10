@@ -20,10 +20,10 @@ public class Canvas extends JPanel {
     private final int CIRCLEWIDTH = 80;
     private final int CIRCLEHEIGHT = 80;
 
-    public int[] clmScore = { -200, -200, -200, -200, -200, -200, -200 };
+    public int[] KIScore = { -200, -200, -200, -200, -200, -200, -200 };
 
-    public void setclmScore(int[] pclmScore) {
-        this.clmScore = pclmScore;
+    public void setKIScore(int[] pKIScore) {
+        this.KIScore = pKIScore;
     }
 
     @Override
@@ -51,9 +51,9 @@ public class Canvas extends JPanel {
         }
         //Score
         graphics.setColor(Color.black);
-        for (int i = 0; i < clmScore.length; i++) {
-            if (clmScore[i] != -200)
-                graphics.drawString("" + clmScore[i], i * (CIRCLEWIDTH + XOFFSET), 600);
+        for (int i = 0; i < KIScore.length; i++) {
+            if (KIScore[i] != -200)
+                graphics.drawString("" + KIScore[i], i * (CIRCLEWIDTH + XOFFSET), 600);
         }
     }
 }
